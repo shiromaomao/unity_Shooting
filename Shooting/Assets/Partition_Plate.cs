@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Partition_Plate : MonoBehaviour
 {
+    //’e‚Ì’Ç‰Á
     // Start is called before the first frame update
     void Start()
     {
