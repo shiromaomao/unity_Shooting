@@ -27,6 +27,9 @@ public class warpsystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(transform.position.y < -5)
+        {
+            transform.position = new Vector3(15, 35, 0);
+        }
     }
 }

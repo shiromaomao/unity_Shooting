@@ -25,6 +25,8 @@ public class Spring_controller : MonoBehaviour
 		var diff = centerObject_position - transform.position ; //ばねの伸び=振動中心の位置(x0)-物体の位置(x)
 		var force = diff * r; //弾性力(復元力) = k*(x0-x)
 		rb.AddForce(force);//弾性力を加える
+		
+		Debug.Log(force);
 	}
 
 	//0.02秒ごとに弾性力を更新していく
