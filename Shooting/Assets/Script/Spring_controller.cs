@@ -26,7 +26,7 @@ public class Spring_controller : MonoBehaviour
 		var force = diff * r; //’e«—Í(•œŒ³—Í) = k*(x0-x)
 		rb.AddForce(force);//’e«—Í‚ğ‰Á‚¦‚é
 		
-		Debug.Log(force);
+		//Debug.Log(force);
 	}
 
 	//0.02•b‚²‚Æ‚É’e«—Í‚ğXV‚µ‚Ä‚¢‚­

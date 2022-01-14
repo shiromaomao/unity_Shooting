@@ -4,41 +4,49 @@ using UnityEngine;
 
 public class Partition_Pole : MonoBehaviour
 {
-    bool PPC = false;
+    int Rx = 0;
 
-    float PPCtime = 0;
+    bool move = true;
+
     //’e‚Ì’Ç‰Á
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    public void WithoutSphere()
+    {
+        Debug.Log("Signal");
+        if(move == true)
+        {
+            move = false;
+
+            StartCoroutine("PPmove");
+        }
+    }
+
+    private IEnumerator PPmove()
+    {
+
+        for (int i = 0; i < 10; i++)
+        {
+            Rx += 12;
+            yield return new WaitForSeconds(0.25f);
+        }
+        move = true;
+
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("A");
-        if (Input.GetKey(KeyCode.C) && transform.position.x >= 14)
+        Debug.Log("Rx:" + Rx);
+        transform.rotation = Quaternion.Euler(Rx, 0, 0);
+
+        if(Rx == 1200)
         {
-            Debug.Log("C");
-            
-            if(PPC == false)
-            {
-                PPC = true;
-            }
-
-            if(PPC == true)
-            {
-                PPCtime += Time.deltaTime;
-                transform.Rotate(0, 0, 2);
-            }
-
-            if(PPCtime > 1)
-            {
-                PPCtime = 0;
-                PPC = false;
-            }
-            
+            Rx = 0;
         }
     }
 }

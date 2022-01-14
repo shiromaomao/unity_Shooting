@@ -4,21 +4,58 @@ using UnityEngine;
 
 public class warpsystem : MonoBehaviour
 {
-    int count= 0;
+    //warp‚Æsphere‚É‚Â‚¢‚Ä
+
+    int count = 0;
+
+    bool opendoor = false;
+
+    public GameObject Door;
+    public GameObject block;
+
+    public Rigidbody rb;
+
+    int BBC = 0;//BlockBreakCount
+  
     private void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name); // ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
         if (col.gameObject.tag == "Block")
         {
-            if (count == 10)
+            if (count >= 20)
             {
-                transform.position = new Vector3(17, 34, -3);
+                transform.position = new Vector3(17, 48, -3);
                 count = 0;
             }
             count += 1;
+
+            col.gameObject.GetComponent<block>().Break();
+        }
+
+        if (col.gameObject.tag == "reflector")
+        {
+            count -= 1;
+        }
+
+        if (col.gameObject.tag == "Sensor")
+        {
+            opendoor = true;
+            Door.gameObject.SendMessage("Open");
+        }
+
+        /*if (opendoor == true && col.gameObject.tag == "Sensor")
+        {
+            Door.gameObject.SendMessage("Open");
+        }*/
+
+        if(col.gameObject.tag == "Wall")
+        {
+            rb.useGravity = false;
+            Debug.Log("rb = F");
         }
     }
-                                        // Start is called before the first frame update
+    
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -29,7 +66,7 @@ public class warpsystem : MonoBehaviour
     {
         if(transform.position.y < -5)
         {
-            transform.position = new Vector3(15, 35, 0);
+            transform.position = new Vector3(15, 48, 0);
         }
     }
 }
