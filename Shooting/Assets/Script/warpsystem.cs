@@ -15,8 +15,11 @@ public class warpsystem : MonoBehaviour
 
     public Rigidbody rb;
 
+    public Material red;
+    public Material black;
+
     int BBC = 0;//BlockBreakCount
-  
+    
     private void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name); // ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
@@ -37,8 +40,21 @@ public class warpsystem : MonoBehaviour
             count -= 1;
         }
 
+        if(col.gameObject.tag == "Wall")
+        {
+            rb.useGravity = false;
+            Debug.Log("rb = F");
+        }
+    }
+
+    private void OnTriggerExit (Collider col)
+    {
+        Debug.Log(col.gameObject.name); // ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
+
+
         if (col.gameObject.tag == "Sensor")
         {
+            Debug.Log("rb = T");
             opendoor = true;
             Door.gameObject.SendMessage("Open");
         }
@@ -48,13 +64,18 @@ public class warpsystem : MonoBehaviour
             Door.gameObject.SendMessage("Open");
         }*/
 
-        if(col.gameObject.tag == "Wall")
+        if (col.gameObject.tag == "RigidbodyGrant")
         {
-            rb.useGravity = false;
-            Debug.Log("rb = F");
+            rb.useGravity = true;
+            Debug.Log("rb = T");
+
+            if (gameObject.GetComponent<Renderer>().material != black)
+            {
+                gameObject.GetComponent<Renderer>().material = black;
+            }
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {

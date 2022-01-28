@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    int y = 0;
-    int z = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +13,19 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //
     }
 
-   // public int openkeynum;ñ¢égóp
-
-    private void Open()
+    public void Open ()
     {
-        //äJè˘
-    //    if (opendoor == true)
-        {
-
-        }
+        StartCoroutine("OD");
     }
-    
+
+    private IEnumerator OD ()
+    {
+        BoxCollider col = GetComponent<BoxCollider>();
+        col.isTrigger = true;
+        yield return new WaitForSeconds(0.75f);
+        col.isTrigger = false;
+    }
 }
-   

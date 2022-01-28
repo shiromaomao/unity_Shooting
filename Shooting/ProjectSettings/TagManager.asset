@@ -11,6 +11,7 @@ TagManager:
   - door
   - Sensor
   - ESphere
+  - RigidbodyGrant
   layers:
   - Default
   - TransparentFX
