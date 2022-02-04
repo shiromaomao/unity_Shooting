@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7698849068401386868}
   - component: {fileID: 7698849068401386869}
   - component: {fileID: 7698849068401386870}
-  - component: {fileID: 7698849068401386871}
   m_Layer: 0
   m_Name: ESphere
   m_TagString: ESphere
@@ -126,20 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 0}
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
   rb: {fileID: 7698849068401386869}
   red: {fileID: 2100000, guid: 577506bcb0b4aca48b94a2609fddcd3f, type: 2}
   black: {fileID: 2100000, guid: 525cd2719c7585e4680215074c8b7ca5, type: 2}
---- !u!114 &7698849068401386871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7698849068401386864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbafed178b4515d469c5c6ff2b9d4a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

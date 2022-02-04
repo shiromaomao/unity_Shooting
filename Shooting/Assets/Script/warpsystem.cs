@@ -8,15 +8,15 @@ public class warpsystem : MonoBehaviour
 
     int count = 0;
 
-    bool opendoor = false;
-
-    public GameObject Door;
     public GameObject block;
 
     public Rigidbody rb;
 
-    public Material red;
-    public Material black;
+
+    //色の変化（全て→黒）
+
+    public Material red;//　　赤
+    public Material black;//　黒
 
     int BBC = 0;//BlockBreakCount
     
@@ -50,19 +50,6 @@ public class warpsystem : MonoBehaviour
     private void OnTriggerExit (Collider col)
     {
         Debug.Log(col.gameObject.name); // ぶつかった相手の名前を取得
-
-
-        if (col.gameObject.tag == "Sensor")
-        {
-            Debug.Log("rb = T");
-            opendoor = true;
-            Door.gameObject.SendMessage("Open");
-        }
-
-        /*if (opendoor == true && col.gameObject.tag == "Sensor")
-        {
-            Door.gameObject.SendMessage("Open");
-        }*/
 
         if (col.gameObject.tag == "RigidbodyGrant")
         {

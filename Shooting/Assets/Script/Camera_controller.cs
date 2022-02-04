@@ -6,7 +6,9 @@ public class Camera_controller : MonoBehaviour
 {
     private GameObject MainCamera;
     private GameObject SubCamera;
-    
+
+    bool MCactive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +19,26 @@ public class Camera_controller : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey("space"))
+        Debug.Log("CCF2");//Ç±Ç±Ç‹Ç≈çsÇ¡ÇΩ
+        if (MCactive == true)
         {
-            MainCamera.SetActive(false);
-            SubCamera.SetActive(true);
+            if (Input.GetKeyDown("space"))
+            {
+                Debug.Log("McA");
+                MainCamera.SetActive(false);
+                SubCamera.SetActive(true);
+                MCactive = false;
+            }
         }
         else
         {
-            SubCamera.SetActive(false);
-            MainCamera.SetActive(true);
+            if (Input.GetKeyDown("space"))
+            {
+                Debug.Log("ScA");
+                SubCamera.SetActive(false);
+                MainCamera.SetActive(true);
+                MCactive = true;
+            }
         }
     }
 }
