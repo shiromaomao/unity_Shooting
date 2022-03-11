@@ -24,7 +24,7 @@ public class Camera_controller : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                Debug.Log("McA");
+                Debug.Log("McA");//Main Camera Active
                 MainCamera.SetActive(false);
                 SubCamera.SetActive(true);
                 MCactive = false;
@@ -34,7 +34,7 @@ public class Camera_controller : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                Debug.Log("ScA");
+                Debug.Log("ScA");//Sub Camera Active
                 SubCamera.SetActive(false);
                 MainCamera.SetActive(true);
                 MCactive = true;

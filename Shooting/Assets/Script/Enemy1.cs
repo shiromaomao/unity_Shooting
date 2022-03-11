@@ -15,4 +15,9 @@ public class Enemy1 : MonoBehaviour
     {
         
     }
+
+    public void Encount()
+    {
+        this.gameObject.transform.position = new Vector3(0,0,0);
+    }
 }
