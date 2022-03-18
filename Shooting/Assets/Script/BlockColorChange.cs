@@ -5,6 +5,8 @@ using UnityEngine;
 public class BlockColorChange : MonoBehaviour
 {
     public GameObject blockPrefab;//Prefab‚Ìblock
+    public GameObject EblockPrefab;//Prefab‚Ìblock (1)
+
     public block blockscript;
 
     bool CC = false;//CC == ColorChange
@@ -13,6 +15,7 @@ public class BlockColorChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blockscript = blockPrefab.GetComponent<block>();
         blockscript = blockPrefab.GetComponent<block>();
     }
 
