@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  ESphere: {fileID: 7698849068401386864}
   rb: {fileID: 7698849068401386869}
   red: {fileID: 2100000, guid: 577506bcb0b4aca48b94a2609fddcd3f, type: 2}
   black: {fileID: 2100000, guid: 525cd2719c7585e4680215074c8b7ca5, type: 2}

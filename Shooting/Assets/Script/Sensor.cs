@@ -8,19 +8,17 @@ public class Sensor : MonoBehaviour
 
     public GameObject Door;
 
-    private void OnTriggerExit(Collider col)
+    private void OnTriggerExit(Collider col)// ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
     {
-        Debug.Log(col.gameObject.name); // ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
-
         if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere")
         {
-            Debug.Log("rb = T");
             opendoor = true;
             Door.gameObject.SendMessage("Open");
         }
     }
+
         // Start is called before the first frame update
-        void Start()
+    void Start()
     {
         
     }

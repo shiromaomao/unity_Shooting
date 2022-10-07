@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,20 @@ using UnityEngine;
 public class warpsystem : MonoBehaviour
 {
     //warpとsphereについて
-
+    int Ss = 5;//Spheres
     int count = 0;
 
     public GameObject block;
+    public GameObject Sphere3;
+    public GameObject ESphere;
 
     public Rigidbody rb;
-
 
     //色の変化（全て→黒）
 
     public Material red;//　　赤
-    public Material black;//　黒
-
-    int BBC = 0;//BlockBreakCount
-    
-    private void OnCollisionEnter(Collision col)
+    public Material black;//　黒 
+    private void OnCollisionEnter(Collision col)//無重力と弾破壊、加速に関する部分
     {
         Debug.Log(col.gameObject.name); // ぶつかった相手の名前を取得
         if (col.gameObject.tag == "Block")
@@ -43,32 +42,28 @@ public class warpsystem : MonoBehaviour
         if(col.gameObject.tag == "Wall")
         {
             rb.useGravity = false;
-            Debug.Log("rb = F");
+            rb.AddForce(transform.up, ForceMode.Impulse);          
         }
     }
 
-    private void OnTriggerExit (Collider col)
+    private void OnTriggerExit (Collider col) // ぶつかった相手の名前を取得
     {
-        Debug.Log(col.gameObject.name); // ぶつかった相手の名前を取得
-
         if (col.gameObject.tag == "RigidbodyGrant")
         {
             rb.useGravity = true;
-            Debug.Log("rb = T");
-
+            
             if (gameObject.GetComponent<Renderer>().material != black)
             {
                 gameObject.GetComponent<Renderer>().material = black;
             }
         }
     }
-
     // Start is called before the first frame update
+
     void Start()
     {
-        
+             
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -76,5 +71,27 @@ public class warpsystem : MonoBehaviour
         {
             transform.position = new Vector3(15, 48, 0);
         }
+
+        Mathf.Clamp(this.gameObject.transform.position.x, -100, 100);//100~-100に制限
+        Mathf.Clamp(this.gameObject.transform.position.y, -100, 100);
+        Mathf.Clamp(this.gameObject.transform.position.z, -100, 100);
+    }
+
+    public void Restart()//シグナルを受け取って実行(block_clone)
+    {
+        Debug.Log("Restart受け取った");
+        for (int Sw = 0; Sw < Ss; Sw++)//Sw==SphereWarp
+        {
+            //int X = 17;allランダム
+            //int Y = 35;
+            //int Z = -2;
+            transform.position = new Vector3(17, 35, -2);
+        }
+        Sphere3.transform.position = new Vector3(16.4f, 15, -2.35f);
+    }
+
+    public void ERestart()//シグナルを受け取って実行(block_clone)
+    {
+        Destroy(ESphere);
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class block : MonoBehaviour
 {
-    public int BB = 0;//BlockBrake
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +13,19 @@ public class block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey("n"))//二フラム（全消し？）
+        {
+            Destroy(this.gameObject);
+            block_clone.blockList.Clear();//Clear == 全消し
+            Debug.Log("test_ReStart");
+        }
     }
     public void Break()
     {
+        Debug.Log(transform.name);
         //ブロックを消す
         Destroy(this.gameObject);
-        BB++;
+        block_clone.blockList.Remove(name);
     }
 
 }

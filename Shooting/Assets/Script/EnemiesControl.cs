@@ -20,8 +20,8 @@ public class EnemiesControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { }
-       /* if(IFon = true && kC == IFKC)
+    { 
+        if(IFon = true && kC == IFKC)
         {
             IFon = false;
             IFKC += 1;
@@ -34,5 +34,5 @@ public class EnemiesControl : MonoBehaviour
         yield return new WaitForSeconds(300f);//300f‘Ò‚Â//test type 10f
         BlockControl.gameObject.SendMessage("ColorChange");
         Enemy1.gameObject.SendMessage("Encount");
-    }*/
+    }
 }

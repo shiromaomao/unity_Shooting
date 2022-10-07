@@ -41,7 +41,6 @@ public class Partition_Pole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Rx:" + Rx);
         transform.rotation = Quaternion.Euler(Rx, 0, 0);
 
         if(Rx == 1200)
