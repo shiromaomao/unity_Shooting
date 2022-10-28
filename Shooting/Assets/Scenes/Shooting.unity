@@ -3092,10 +3092,10 @@ Transform:
   - {fileID: 252116480}
   - {fileID: 1323935771}
   - {fileID: 959667545}
+  - {fileID: 561343252}
   - {fileID: 781134357}
   - {fileID: 1311314491}
   - {fileID: 1541859348}
-  - {fileID: 561343252}
   - {fileID: 323321405}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -4376,7 +4376,7 @@ Transform:
   m_LocalScale: {x: 30, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 383415335}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &561343253
 BoxCollider:
@@ -5719,7 +5719,7 @@ Transform:
   m_LocalScale: {x: 30, y: 9, z: 1}
   m_Children: []
   m_Father: {fileID: 383415335}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &781134358
 BoxCollider:
@@ -6816,7 +6816,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 1
+  m_Depth: 5
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -8812,7 +8812,7 @@ Transform:
   m_LocalScale: {x: 9, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 383415335}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1311314492
 BoxCollider:
@@ -9446,7 +9446,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 4
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10353,7 +10353,7 @@ Transform:
   m_LocalScale: {x: 9, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 383415335}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1541859349
 BoxCollider:
@@ -12075,6 +12075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e9f91151fc87340810f2904b5c51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MC2pass: 0
   Sphere: {fileID: 1499855140}
 --- !u!65 &1904501959
 BoxCollider:

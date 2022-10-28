@@ -11,9 +11,18 @@ public class Spring_controller : MonoBehaviour
 	Rigidbody rb;
 	Transform centerObjectTransform;
 
-	//単振動させる物体のRigidbodyと
-	//振動中心に設定したオブジェクトのTransformを取得しておく
-	void Awake()
+    void Start()
+    {
+		
+	}
+    void Update()
+    {
+
+	}
+
+    //単振動させる物体のRigidbodyと
+    //振動中心に設定したオブジェクトのTransformを取得しておく
+    void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 		centerObjectTransform = centerObject.transform;

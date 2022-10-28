@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI;
 
 public class PlayManual : MonoBehaviour
@@ -17,10 +16,8 @@ public class PlayManual : MonoBehaviour
     bool mcD = false;//0
     bool mcLeft = false;//1
     bool mcRight = false;//1
-    bool mcR = false;//2
-    bool mcHold = false;//2
-    int LongPress = 10;//2
-    int Pushing = 0;//2
+    bool mcR = false;//1
+    bool MC2 = false;//2
 
     List<string> manual_list = new List<string>();
 
@@ -37,7 +34,23 @@ public class PlayManual : MonoBehaviour
 
     // Update is called once per frame
     public void Update()
-    {   // オブジェクトからTextコンポーネントを取得
+    {
+        //MC2 = LPsensor.MC2pass;//from LPsensor
+
+        if (Input.GetKey("m"))
+        {
+            MC = 0;//ManualCount
+
+            mcW = false;//0    //mc = manual check
+            mcA = false;//0
+            mcS = false;//0
+            mcD = false;//0
+            mcLeft = false;//1
+            mcRight = false;//1
+            mcR = false;//1
+            MC2 = false;//2
+        }
+        // オブジェクトからTextコンポーネントを取得
         Text manual_text = manual_object.GetComponentInChildren<Text>();
 
         manual_text.text = manual_list[MC];
@@ -70,28 +83,13 @@ public class PlayManual : MonoBehaviour
         {
             MC++;
             mcR = false; mcLeft = false; mcRight = false;
+            Debug.Log("M1comp");
         }
         //MC == 2
-        if (MC == 2)
+        if (MC2 == true)//LPsensorで判別する
         {
-            if(Pushing == LongPress)
-            {
-                mcHold = true;
-            }
-            if (mcHold == true && Input.GetKeyDown("C"))
-            {
-                MC++;
-                mcHold = false;Pushing = 0;
-            }
-            if (Input.GetKey("C"))
-            {
-                Pushing = Pushing + 1;
-            }
-            if (Input.GetKeyUp("C"))
-            {
-                Pushing = 0;
-            }
-
+            MC++;
+            MC2 = false;
         }
         //MC == 3
         //Cameraの切り替えは Camera_controller で切り替えをする

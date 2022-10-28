@@ -7,7 +7,11 @@ public class LPsensor : MonoBehaviour
     //”­ŽË‘ä‚É‚È‚¢‚ÆAV‚µ‚¢‹…‚ªo‚¹‚È‚¢
 
     bool isS = false;
+    public bool MC2pass = false;
     int STeleport = 0;//(0 notTP /1 TPcheck /2 SphereTP!!)
+    int ManualNum = 0;
+    int ManuCheck = 0;
+    int Cpush = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,39 @@ public class LPsensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ManualNum = PlayManual.MC;
+        if (Input.GetKey("m"))
+        {
+            MC2pass = false;
+            ManuCheck = 0;
+            Cpush = 0;
+        }
+        if (isS == false)
+        {
+            if (ManuCheck == 0)
+            {
+                ManuCheck++;
+            }
+            if (ManuCheck == 2)
+            {
+                ManuCheck++;
+            }
+        }
+        if (isS == true && ManuCheck == 1)
+        {
+            ManuCheck++;
+        }
+        if (ManualNum == 2)//MC==2
+        {
+            if (Input.GetKeyDown("c"))
+            {
+                Cpush++;
+            }
+            if (Cpush >= 2 && ManuCheck >= 3)//“ñ‰ñ‰Ÿ‚µ‚½‚Æ‚« and ’e‚ª”­ŽË‚³‚ê‚½‚ç
+            {
+                MC2pass = true;
+            }
+        }
     }
 
     void OnTriggerStay(Collider col)

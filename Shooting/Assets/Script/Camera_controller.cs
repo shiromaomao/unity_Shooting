@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Camera_controller : MonoBehaviour
 {
+    private GameObject TitleCamera;
     private GameObject MainCamera;
     private GameObject SubCamera1;
     private GameObject SubCamera2;
     private GameObject SubCamera3A;
     private GameObject SubCamera3a;
 
-    bool MCactive = true;
+    bool MCactive = true;//ManualCamera
     int SceneNum = 0;
     int ManualNum = 0;
 
@@ -19,18 +20,33 @@ public class Camera_controller : MonoBehaviour
     {
         SceneNum = SceneManage.Sc;
         ManualNum = PlayManual.MC;
-
-        MainCamera = GameObject.Find("ManualMainCamera");
-        SubCamera1 = GameObject.Find("ManualSubCamera1");
-        SubCamera2 = GameObject.Find("ManualSubCamera2");
-        SubCamera3A = GameObject.Find("GameMainCamera");
-        SubCamera3a = GameObject.Find("GameSubCamera");
-
-        if (SceneNum == 1 && ManualNum < 3)//senceがplaymanualの時カメラ変更
+        //カメラを探してあったら代入//一回全部オフにする
+        if (GameObject.Find("MainCamera") != null)
+        { TitleCamera = GameObject.Find("MainCamera"); TitleCamera.SetActive(false); }
+        if (GameObject.Find("ManualMainCamera") != null)
+        { MainCamera = GameObject.Find("ManualMainCamera"); MainCamera.SetActive(false); }
+        if (GameObject.Find("ManualSubCamera1") != null)
+        { SubCamera1 = GameObject.Find("ManualSubCamera1"); SubCamera1.SetActive(false); }
+        if (GameObject.Find("ManualSubCamera2") != null)
+        { SubCamera2 = GameObject.Find("ManualSubCamera2"); SubCamera2.SetActive(false); }
+        if (GameObject.Find("GameMainCamera") != null)
+        { SubCamera3A = GameObject.Find("GameMainCamera"); SubCamera3A.SetActive(false); }
+        if (GameObject.Find("GameSubCamera") != null)
+        { SubCamera3a = GameObject.Find("GameSubCamera"); SubCamera3a.SetActive(false); }
+    }
+    void Update()//ManualNum == 3も含む//speace
+    {
+        if(SceneNum == 0)//title
+        {
+            TitleCamera.SetActive(true);
+        }
+        ManualNum = PlayManual.MC;
+        if (SceneNum == 1 && ManualNum < 3)//senceがplaymanualの時のカメラ変更
         {
             //==0 の時MainCameraはtrue//WASD
             if (ManualNum == 1)//←→R
             {
+                Debug.Log("MainCamera=false");
                 MainCamera.SetActive(false);
                 SubCamera1.SetActive(true);
             }
@@ -39,27 +55,46 @@ public class Camera_controller : MonoBehaviour
                 SubCamera1.SetActive(false);
                 SubCamera2.SetActive(true);
             }
-        }
-        SubCamera1.SetActive(false); SubCamera2.SetActive(false); SubCamera3A.SetActive(false); SubCamera3a.SetActive(false);
-    }
-    void Update()//ManualNum == 3も含む//speace
-    {
-        if (MCactive == true)
-        {
-            if (Input.GetKeyDown("space"))
+            if (MCactive == true)//MC3
             {
-                SubCamera3A.SetActive(false);
-                SubCamera3a.SetActive(true);
-                MCactive = false;
+                if (Input.GetKeyDown("space"))
+                {
+                    SubCamera3A.SetActive(false);
+                    SubCamera3a.SetActive(true);
+                    MCactive = false;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown("space"))
+                {
+                    SubCamera3a.SetActive(false);
+                    SubCamera3A.SetActive(true);
+                    MCactive = true;
+                    Debug.Log("M2comp");
+                }
             }
         }
-        else
+        if (SceneNum == 2)
         {
-            if (Input.GetKeyDown("space"))
+            if (MCactive == true)//Play
             {
-                SubCamera3a.SetActive(false);
-                SubCamera3A.SetActive(true);
-                MCactive = true;
+                if (Input.GetKeyDown("space"))
+                {
+                    SubCamera3A.SetActive(false);
+                    SubCamera3a.SetActive(true);
+                    MCactive = false;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown("space"))
+                {
+                    SubCamera3a.SetActive(false);
+                    SubCamera3A.SetActive(true);
+                    MCactive = true;
+                    Debug.Log("M2comp");
+                }
             }
         }
     }

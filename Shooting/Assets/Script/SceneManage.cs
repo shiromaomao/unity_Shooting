@@ -15,10 +15,11 @@ public class SceneManage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Sc == 0)
+        if(Sc == 0)//title
         {
             if (Input.GetKey("m"))//ëÄçÏê‡ñæÇ…
             {
+                Debug.Log("manual");
                 SceneManager.LoadScene("Playmanual");//Sc == 1
                 Sc++;
             }
@@ -27,6 +28,7 @@ public class SceneManage : MonoBehaviour
         {
             if (Input.GetKey("p"))
             {
+                Debug.Log("play");
                 SceneManager.LoadScene("Shooting");//Sc == 2
                 Sc = 2;
             }
@@ -35,6 +37,7 @@ public class SceneManage : MonoBehaviour
         {
             if (Input.GetKey("m"))
             {
+                Debug.Log("manual");
                 SceneManager.LoadScene("Playmanual");//Sc == 1
                 Sc--;
             }

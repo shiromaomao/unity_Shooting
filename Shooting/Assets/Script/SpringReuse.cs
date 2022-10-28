@@ -7,7 +7,7 @@ public class SpringReuse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,5 +17,6 @@ public class SpringReuse : MonoBehaviour
         {
             transform.position = new Vector3(16.4f, 10.5f, 10.74f);
         }
+
     }
 }
