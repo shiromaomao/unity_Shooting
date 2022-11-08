@@ -21,8 +21,7 @@ public class warpsystem : MonoBehaviour
     public Material black;//　黒 
     private void OnCollisionEnter(Collision col)//無重力と弾破壊、加速に関する部分
     {
-        Debug.Log(col.gameObject.name); // ぶつかった相手の名前を取得
-        if (col.gameObject.tag == "Block")
+        if (col.gameObject.tag == "Block")// ぶつかった相手の名前を取得
         {
             if (count >= 20)
             {
@@ -79,15 +78,11 @@ public class warpsystem : MonoBehaviour
 
     public void Restart()//シグナルを受け取って実行(block_clone)
     {
-        Debug.Log("Restart受け取った");
         for (int Sw = 0; Sw < Ss; Sw++)//Sw==SphereWarp
         {
-            //int X = 17;allランダム
-            //int Y = 35;
-            //int Z = -2;
             transform.position = new Vector3(17, 35, -2);
+            Sphere3.transform.position = new Vector3(16.4f, 15, -2.35f);
         }
-        Sphere3.transform.position = new Vector3(16.4f, 15, -2.35f);
     }
 
     public void ERestart()//シグナルを受け取って実行(block_clone)

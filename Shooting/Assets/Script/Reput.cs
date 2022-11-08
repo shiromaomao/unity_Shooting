@@ -9,7 +9,6 @@ public class Reput : MonoBehaviour
     public void ReputS3()//from  "LPsensor"
     {
         transform.position = new Vector3(16.4f,14,-2.35f);
-        Debug.Log("Step Reput");
     }
     // Start is called before the first frame update
     void Start()

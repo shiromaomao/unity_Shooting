@@ -17,7 +17,6 @@ public class valve : MonoBehaviour
         if (Input.GetKey(KeyCode.C))
         {
             transform.position = new Vector3(16.4f, 12.09f, 0);
-            Debug.Log("openval");
         }
         else
         {

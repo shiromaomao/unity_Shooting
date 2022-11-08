@@ -16,7 +16,6 @@ public class Partition_Pole : MonoBehaviour
     }
     public void WithoutSphere()
     {
-        Debug.Log("Signal");
         if(move == true)
         {
             move = false;

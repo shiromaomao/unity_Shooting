@@ -7,7 +7,7 @@ public class LPsensor : MonoBehaviour
     //”­Ë‘ä‚É‚È‚¢‚ÆAV‚µ‚¢‹…‚ªo‚¹‚È‚¢
 
     bool isS = false;
-    public bool MC2pass = false;
+    public static bool MC2pass = false;
     int STeleport = 0;//(0 notTP /1 TPcheck /2 SphereTP!!)
     int ManualNum = 0;
     int ManuCheck = 0;

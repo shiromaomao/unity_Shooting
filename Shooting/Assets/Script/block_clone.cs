@@ -106,9 +106,6 @@ public class block_clone : MonoBehaviour
                 ve = 17;
             }
             hi = 3;
-
-            Debug.Log(string.Join(",", blockList));
-
             pop = false;
         }
 
@@ -152,7 +149,6 @@ public class block_clone : MonoBehaviour
         X = blockList.Count;//残数の把握
         nX = X * 0.2f;//20%の指定
 
-        Debug.Log(X); Debug.Log(nX);
         for (int Z = 0; Z <= nX; Z++)//120C24=120!/24!
         {
             Y = Random.Range(1, blockList.Count);//残存ブロックの中から色付きを選ぶ
@@ -161,7 +157,6 @@ public class block_clone : MonoBehaviour
             ColorBlock.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
             ColorBlocks++;
             blockList.Remove("block" + Y);
-            Debug.Log(ColorBlocks);
         }
 
         if (ColorBlocks <= 10)//もし色付きが10個以下なら

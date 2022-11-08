@@ -22,12 +22,6 @@ public class ESlaunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-       /* if(Input.GetKeyDown("up") && ESLcount < 3)
-        {
-            ESl();
-            ESLcount++;
-        }*/
-
         if(num > 0 )
         {
             for (int i = 0; i < ESphereList.Count; ++i)

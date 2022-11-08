@@ -19,7 +19,6 @@ public class SceneManage : MonoBehaviour
         {
             if (Input.GetKey("m"))//‘€ìà–¾‚É
             {
-                Debug.Log("manual");
                 SceneManager.LoadScene("Playmanual");//Sc == 1
                 Sc++;
             }
@@ -27,8 +26,7 @@ public class SceneManage : MonoBehaviour
         if (Sc <= 2)//play‰æ–Ê‚É
         {
             if (Input.GetKey("p"))
-            {
-                Debug.Log("play");
+            { 
                 SceneManager.LoadScene("Shooting");//Sc == 2
                 Sc = 2;
             }
@@ -37,7 +35,6 @@ public class SceneManage : MonoBehaviour
         {
             if (Input.GetKey("m"))
             {
-                Debug.Log("manual");
                 SceneManager.LoadScene("Playmanual");//Sc == 1
                 Sc--;
             }

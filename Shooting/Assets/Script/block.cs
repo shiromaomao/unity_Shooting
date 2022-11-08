@@ -17,12 +17,10 @@ public class block : MonoBehaviour
         {
             Destroy(this.gameObject);
             block_clone.blockList.Clear();//Clear == 全消し
-            Debug.Log("test_ReStart");
         }
     }
     public void Break()
     {
-        Debug.Log(transform.name);
         //ブロックを消す
         Destroy(this.gameObject);
         block_clone.blockList.Remove(name);

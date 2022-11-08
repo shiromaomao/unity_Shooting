@@ -24,6 +24,7 @@ public class PlayManual : MonoBehaviour
     // Start is called before the first frame update
     void Start()// \n (バックスラッシュ＋ｎで改行)PCによってはバックスラッシュがお金のマークになる
     {
+        MC = 0;
         manual_list.Add("水色の板reflectorは\nWASDで上下移動ができるよ");//0
         manual_list.Add("reflectorは左右の矢印キー\nで向きを変えれるよ\nRキーで中央に戻るよ");//1
         manual_list.Add("Cキー長押しで弾を装填\nもう一度Cキーを押すと発射！");//2
@@ -86,6 +87,7 @@ public class PlayManual : MonoBehaviour
             Debug.Log("M1comp");
         }
         //MC == 2
+        MC2 = LPsensor.MC2pass;
         if (MC2 == true)//LPsensorで判別する
         {
             MC++;
