@@ -112,13 +112,15 @@ public class block_clone : MonoBehaviour
         if (Input.GetKeyDown("up") && espheres_C < 3)
         {
             ESpheres.Add(Muzzle.GetComponent<ESlaunch>().ESl());
+            Debug.Log("ESadd");
             espheres_C++;
         }
 
         if (blockList.Count == 0 && pop == false)//block 0 //ゲーム中
         {
             for (int S = 0; S < Spheres.Length; S++)
-            {
+            {   
+                if (Spheres[S] != null) { break; }
                 Spheres[S].SendMessage("Restart");//それぞれのSphereのRestartってところにシグナルを送る(warpsystem.Restart) 
             }
 
@@ -129,7 +131,9 @@ public class block_clone : MonoBehaviour
             {
                 if (ESpheres[ES] != null)//オブジェクトが存在している間は実行
                 {
+                    if (ESpheres[ES] == null) { break; }
                     ESpheres[ES].GetComponent<warpsystem>().ERestart();
+
                 }
             }
 

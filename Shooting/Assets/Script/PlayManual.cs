@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class PlayManual : MonoBehaviour
 {
     //配列作ってぶっこむ
     public GameObject manual_object = null;
-
+    public GameObject SceneManager = null;
     public static int MC = 0;//ManualCount
 
     bool mcW = false;//0    //mc = manual check
@@ -18,6 +18,9 @@ public class PlayManual : MonoBehaviour
     bool mcRight = false;//1
     bool mcR = false;//1
     bool MC2 = false;//2
+    bool MC2judge = false;//2
+    bool MC3 = false;//3
+    bool MClast = false;//4,5
 
     List<string> manual_list = new List<string>();
 
@@ -50,6 +53,9 @@ public class PlayManual : MonoBehaviour
             mcRight = false;//1
             mcR = false;//1
             MC2 = false;//2
+            MC2judge = false;//2
+            MC3 = false;//3
+            MClast = false;//4,5
         }
         // オブジェクトからTextコンポーネントを取得
         Text manual_text = manual_object.GetComponentInChildren<Text>();
@@ -71,30 +77,59 @@ public class PlayManual : MonoBehaviour
         if (Input.GetKeyDown("a") && MC == 0) { mcA = true; }
         if (Input.GetKeyDown("s") && MC == 0) { mcS = true; }
         if (Input.GetKeyDown("d") && MC == 0) { mcD = true; }
-        if (mcW == true && mcA == true && mcS == true && mcD == true)
+        if (mcW && mcA && mcS && mcD)
         {
-            MC++;
+            MC = 1;
             mcW = false; mcA = false; mcS = false; mcD = false;
         }
         //MC == 1
         if (Input.GetKeyDown("r") && MC == 1) { mcR = true; }
         if (Input.GetKeyDown("left") && MC == 1) { mcLeft = true; }
         if (Input.GetKeyDown("right") && MC == 1) { mcRight = true; }
-        if (mcR == true && mcLeft == true && mcRight == true)
+        if (mcR && mcLeft && mcRight)
         {
-            MC++;
+            MC = 2;
             mcR = false; mcLeft = false; mcRight = false;
             Debug.Log("M1comp");
         }
         //MC == 2
         MC2 = LPsensor.MC2pass;
-        if (MC2 == true)//LPsensorで判別する
+        if (MC2 && !MC2judge)//LPsensorで判別する
         {
-            MC++;
+            MC = 3;
             MC2 = false;
+            MC2judge = true;
+            Debug.Log("M2comp");
         }
+        if(MC != 2) { MC2judge = false; }
         //MC == 3
         //Cameraの切り替えは Camera_controller で切り替えをする
+        if (MC == 3)
+        {
+            Debug.Log("M3start");
+            MC3 = Camera_controller.MC3comp;//3
+            MClast = true;
+            if (MC3)
+            {
+                Debug.Log("M3comp");
+                MC = 4;
+                MC3 = false;
+            }
+        }
+        if(MClast && MC == 4)
+        {
+            MClast = false;
+            StartCoroutine("ManualCount");
+        }
+    }
 
+    public IEnumerator ManualCount()
+    {
+        MC = 4;
+        yield return new WaitForSeconds(5);
+        MC = 5;
+        yield return new WaitForSeconds(10);
+        SceneManager.SendMessage("play");
+        yield break;
     }
 }

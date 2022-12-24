@@ -16,19 +16,19 @@ public class reflector : MonoBehaviour
 
         if (Input.GetKey("w"))
         {
-            player_position.y = Mathf.Clamp(transform.position.y + 0.15f, 1.275f, 8.75f);
+            player_position.y = Mathf.Clamp(transform.position.y + 0.15f, 2, 8);
         }
         if (Input.GetKey("s"))
         {
-            player_position.y = Mathf.Clamp(transform.position.y - 0.15f, 1.275f, 8.75f);
+            player_position.y = Mathf.Clamp(transform.position.y - 0.15f, 2, 8);
         }
         if (Input.GetKey("a"))
         {
-            player_position.x = Mathf.Clamp(transform.position.x - 0.2f, -12, 12);
+            player_position.x = Mathf.Clamp(transform.position.x - 0.2f, -10, 10);
         }
         if (Input.GetKey("d"))
         {
-            player_position.x = Mathf.Clamp(transform.position.x + 0.2f, -12, 12);
+            player_position.x = Mathf.Clamp(transform.position.x + 0.2f, -10, 10);
         }
         transform.position = new Vector3(player_position.x, player_position.y, -22);
         if (Input.GetKey("r"))

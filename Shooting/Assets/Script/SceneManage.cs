@@ -9,13 +9,13 @@ public class SceneManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Sc == 0)//title
+        if (Sc == 0)//title
         {
             if (Input.GetKey("m"))//‘€ìà–¾‚É
             {
@@ -26,7 +26,7 @@ public class SceneManage : MonoBehaviour
         if (Sc <= 2)//play‰æ–Ê‚É
         {
             if (Input.GetKey("p"))
-            { 
+            {
                 SceneManager.LoadScene("Shooting");//Sc == 2
                 Sc = 2;
             }
@@ -39,5 +39,11 @@ public class SceneManage : MonoBehaviour
                 Sc--;
             }
         }
+    }
+
+    public void play()
+    {
+        SceneManager.LoadScene("Shooting");//Sc == 2
+        Sc = 2;
     }
 }

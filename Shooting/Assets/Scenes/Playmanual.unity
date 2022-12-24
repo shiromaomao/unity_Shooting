@@ -643,8 +643,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 13.4, z: -33.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 872962843}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!81 &221291816
 AudioListener:
@@ -2889,10 +2889,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1332192666}
-  - {fileID: 221291815}
-  - {fileID: 1210227333}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3995,8 +3992,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 872962843}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1210227334
 MonoBehaviour:
@@ -4628,8 +4625,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 6.5, z: -37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 872962843}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &1332192667
 AudioListener:
@@ -5210,7 +5207,7 @@ Transform:
   - {fileID: 1698941708}
   - {fileID: 1399143306}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534706123
 GameObject:
@@ -6754,6 +6751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manual_object: {fileID: 1905195218}
+  SceneManager: {fileID: 373869559}
 --- !u!1 &1961946738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7320,7 +7318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e9f91151fc87340810f2904b5c51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MC2pass: 0
   Sphere: {fileID: 496516109}
 --- !u!65 &2106337925
 BoxCollider:

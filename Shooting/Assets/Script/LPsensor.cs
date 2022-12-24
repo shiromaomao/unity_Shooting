@@ -54,6 +54,12 @@ public class LPsensor : MonoBehaviour
                 MC2pass = true;
             }
         }
+        else
+        {
+            MC2pass = false;
+            ManuCheck = 0;
+            Cpush = 0;
+        }
     }
 
     void OnTriggerStay(Collider col)
