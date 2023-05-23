@@ -23,4 +23,11 @@ public class valve : MonoBehaviour
             transform.position = new Vector3(16.4f, 12.09f, -2.35f);
         }
     }
+    public IEnumerator OPENtheGATE()
+    {
+        transform.position = new Vector3(16.4f, 12.09f, 0);
+        yield return (2);
+        transform.position = new Vector3(16.4f, 12.09f, -2.35f);
+    }
+
 }

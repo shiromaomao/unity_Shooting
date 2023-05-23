@@ -7,8 +7,9 @@ public class PPsensor : MonoBehaviour
     public GameObject Partition_Pole;
     private void OnTriggerExit (Collider col)
     {
-        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere")// ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
+        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere" || col.gameObject.tag == "sphere3")// “§‰ß‚µ‚½‘ŠŽè‚Ì–¼‘O‚ðŽæ“¾
         {
+            Debug.Log("haguruma guruguru");
             Partition_Pole.SendMessage("WithoutSphere");
         }         
     }

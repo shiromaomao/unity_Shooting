@@ -4472,7 +4472,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallHP: 0
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  B3freeze: {fileID: 0}
   Sphere3: {fileID: 1499855140}
   ESphere: {fileID: 0}
   rb: {fileID: 574854129}
@@ -6344,8 +6346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d43f6fa0f54324399972d8383ee180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
-  Eoriginal: {fileID: 5905003757563330963, guid: d025baee836c4f648ac76abce863610f, type: 3}
+  Blocks: []
+  B1original: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  B2bomb: {fileID: 8737646169832287135, guid: d2a8102380674c54f86ab79e694075b1, type: 3}
+  B3freeze: {fileID: 7326500391182602720, guid: ef69ddf73310a9b419c190bd04ba902f, type: 3}
+  B4barrier: {fileID: 5731117517662317370, guid: cc94e1e2ed55d8a4f92689e7d5288662, type: 3}
+  B5annihilation: {fileID: 5813415424155345242, guid: 2ada9db9613bb6c4b86361b97af3f038, type: 3}
+  B0Eoriginal: {fileID: 5905003757563330963, guid: d025baee836c4f648ac76abce863610f, type: 3}
   Spheres: []
   Sphere: {fileID: 1114761062}
   Sphere1: {fileID: 574854125}
@@ -7171,7 +7178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallHP: 0
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  B3freeze: {fileID: 0}
   Sphere3: {fileID: 1499855140}
   ESphere: {fileID: 0}
   rb: {fileID: 1022078798}
@@ -7858,8 +7867,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallHP: 0
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
-  Sphere3: {fileID: 1499855140}
+  B3freeze: {fileID: 0}
+  Sphere3: {fileID: 0}
   ESphere: {fileID: 0}
   rb: {fileID: 1114761067}
   red: {fileID: 0}
@@ -9170,7 +9181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallHP: 0
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  B3freeze: {fileID: 0}
   Sphere3: {fileID: 1499855140}
   ESphere: {fileID: 0}
   rb: {fileID: 1362035819}
@@ -10012,7 +10025,7 @@ GameObject:
   - component: {fileID: 1499855142}
   m_Layer: 0
   m_Name: Sphere 3
-  m_TagString: Sphere
+  m_TagString: sphere3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10056,7 +10069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8228d851a131f5b44b94574d0a5d9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallHP: 0
   block: {fileID: 5784933345753079996, guid: 5d85e06c2a35dd24287113e40db074bb, type: 3}
+  B3freeze: {fileID: 0}
   Sphere3: {fileID: 1499855140}
   ESphere: {fileID: 0}
   rb: {fileID: 1499855144}
@@ -12075,6 +12090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e9f91151fc87340810f2904b5c51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PP: {fileID: 264226472}
+  LPvalve: {fileID: 1879386067}
   Sphere: {fileID: 1499855140}
 --- !u!65 &1904501959
 BoxCollider:

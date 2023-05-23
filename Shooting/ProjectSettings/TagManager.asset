@@ -12,6 +12,13 @@ TagManager:
   - Sensor
   - ESphere
   - RigidbodyGrant
+  - B0Eoriginal
+  - B1original
+  - B2bomb
+  - B3freeze
+  - B4barrier
+  - B5annihilation
+  - sphere3
   layers:
   - Default
   - TransparentFX

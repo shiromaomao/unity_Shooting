@@ -26,7 +26,7 @@ public class ESlaunch : MonoBehaviour
         {
             for (int i = 0; i < ESphereList.Count; ++i)
             {
-                Debug.Log("ESphere"+ i);               //  i ”Ô–Ú‚Ì—v‘f‚ð•\Ž¦
+            //    Debug.Log("ESphere"+ i);               //  i ”Ô–Ú‚Ì—v‘f‚ð•\Ž¦
             }
         }
     }

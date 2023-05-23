@@ -12,6 +12,10 @@ public class LPsensor : MonoBehaviour
     int ManualNum = 0;
     int ManuCheck = 0;
     int Cpush = 0;
+
+    public GameObject PP;
+    public GameObject LPvalve;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,11 +64,17 @@ public class LPsensor : MonoBehaviour
             ManuCheck = 0;
             Cpush = 0;
         }
+
+
+        if (Input.GetKeyDown("c"))
+        {
+            StartCoroutine("SphereCheck");
+        }
     }
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere")
+        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere" || col.gameObject.tag == "sphere3")
         {
             isS = true;//‹Ê‚ ‚è
             STeleport = 0;
@@ -73,7 +83,7 @@ public class LPsensor : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere")
+        if (col.gameObject.tag == "Sphere" || col.gameObject.tag == "ESphere" || col.gameObject.tag == "sphere3")
         {
             isS = false;//’e–³‚µ         
         }
@@ -84,7 +94,8 @@ public class LPsensor : MonoBehaviour
     public IEnumerator SphereCheck()//(0 notTP /1 TPcheck /2 SphereTP!!)
     {
         if (isS == false)
-        {     
+        {
+            Debug.Log("noSphere");
             yield return new WaitForSeconds(10);
             STeleport ++;
         }
@@ -96,7 +107,9 @@ public class LPsensor : MonoBehaviour
 
         if (STeleport == 2)
         {
-            Sphere.gameObject.SendMessage("ReputS3");
+            PP.GetComponent<Partition_Pole>().PPmove();
+            LPvalve.GetComponent<valve>().OPENtheGATE();
+            //Sphere.gameObject.SendMessage("ReputS3");
             STeleport = 0;
         }
     }

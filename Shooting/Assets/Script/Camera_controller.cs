@@ -106,27 +106,29 @@ public class Camera_controller : MonoBehaviour
         if (SceneNum == 2)
         {
             MCactive = true;
-            if (MCactive == true)//Play
-            {
-                Debug.Log("kirikae");
-                SubCamera3a.SetActive(true);
-
-                if (Input.GetKeyDown("space"))
+            
+                if (MCactive == true)//Play
                 {
-                    SubCamera3A.SetActive(false);
                     SubCamera3a.SetActive(true);
-                    MCactive = false;
+
+                    if (Input.GetKeyDown("space"))
+                    {
+                        SubCamera3A.SetActive(false);
+                        SubCamera3a.SetActive(true);
+                        MCactive = false;
+                    }
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown("space"))
+                else
                 {
-                    SubCamera3a.SetActive(false);
-                    SubCamera3A.SetActive(true);
-                    MCactive = true;
+                    if (Input.GetKeyDown("space"))
+                    {
+                        SubCamera3a.SetActive(false);
+                        SubCamera3A.SetActive(true);
+                        MCactive = true;
+                    }
                 }
-            }
+            
+            
         }
     }
 }

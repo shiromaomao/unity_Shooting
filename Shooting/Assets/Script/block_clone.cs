@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class block_clone : MonoBehaviour
 {
-    public GameObject original;
-    public GameObject Eoriginal;//緊急用
+    public GameObject[] Blocks;
+    public GameObject B1original;//nomal
+    public GameObject B2bomb;
+    public GameObject B3freeze;
+    public GameObject B4barrier;
+    public GameObject B5annihilation;
+    public GameObject B0Eoriginal;//緊急用
 
     public GameObject[] Spheres;//再配置用
     public GameObject Sphere;
@@ -17,7 +22,7 @@ public class block_clone : MonoBehaviour
     public GameObject Muzzle;
 
     bool pop = true;
-    int AllBreak = 0;//全消し
+    int AllBreak = 1;//全消し == 面
 
     int hi = 3;//height    高さ//3~5
     int ve = 17;//vertical　縦  //17~5
@@ -31,9 +36,11 @@ public class block_clone : MonoBehaviour
     int Eve = 3;//縦    3~-3
     int Ewi = -9;//横    -9~5
 
+    int wave = 0;
     int stage = 0;//2面以降
-    int produse_t = 0;//true
-    int skill_c = 0;//count
+    int produce_t = 0;//true
+    int blocknum = 0;
+    int BNR = 0 ;//blocknumrange
 
     public static List<string> blockList = new List<string>();//共有できるにするようにする
 
@@ -43,6 +50,7 @@ public class block_clone : MonoBehaviour
     void Start()
     {
         Spheres = new GameObject[] { Sphere, Sphere1, Sphere2, Sphere3, Sphere4};
+        Blocks = new GameObject[] { B0Eoriginal,B1original, B2bomb, B3freeze, B4barrier, B5annihilation};
     }
 
     //　もし今後スコア制を導入するなら、色付き +500 、色付き全破壊 +500*X体目 。通常は、100とかで
@@ -59,40 +67,21 @@ public class block_clone : MonoBehaviour
                 {
                     for (int widt = 0; widt < 5; widt++)
                     {
-                        if (stage >= 1)//2面以降
+                        if (wave >= 1)//2面以降
+                                       //面が進むごとにノーマルを減らして強い能力付きを増やす。()は未実装
+                                       //爆発＜（弾の複製）＜凍結＜（分裂）＜障壁＜対消滅
+                                       //bomb< (ballcopi) <freeze< (split) <barrier<annihilation
                         {
                             num++;
-                            produse_t = Random.Range(0, 10 * stage);
-                            if (produse_t >= 0 && produse_t <= 1.8*stage)//生成
-                            {
-                                GameObject copied = Object.Instantiate(original) as GameObject;//oliginalをcopiする
-                                //if (skill_c > 0)
-                                while (skill_c >= 0)//能力付与(scriptをinspectorにAddする？)
-                                {
-                                    skill_c--;
-                                    if (skill_c < 0)
-                                    {
-                                        break;
-                                    }
-                                }
-                                copied.transform.Translate(wi, hi, ve);//copiの出てくる場所を(x=-25,y=30,z=-6~7)とする
-                                copied.name = "block" + num;
-                                blockList.Add("block" + num);
-                            }
-                            else
-                            {
-                                skill_c++;
-                                if (produse_t >= 7 * stage)
-                                {
-                                    skill_c += (stage * 2);
-                                }
-                            }                            
+
+                            BlockCreate();
                             wi += 4;
                         }
                         else//1面
                         {
                             num++;
-                            GameObject copied = Object.Instantiate(original) as GameObject;//oliginalをcopiする
+                            //test 一時的にB1original→B3freeze
+                            GameObject copied = Object.Instantiate(B3freeze) as GameObject;//oliginalをcopiする
                             copied.transform.Translate(wi, hi, ve);//copiの出てくる場所を(x=-25,y=30,z=-6~7)とする
                             copied.name = "block" + num;
                             blockList.Add("block" + num);
@@ -107,6 +96,7 @@ public class block_clone : MonoBehaviour
             }
             hi = 3;
             pop = false;
+            num = 0;
         }
 
         if (Input.GetKeyDown("up") && espheres_C < 3)
@@ -118,32 +108,68 @@ public class block_clone : MonoBehaviour
 
         if (blockList.Count == 0 && pop == false)//block 0 //ゲーム中
         {
-            for (int S = 0; S < Spheres.Length; S++)
+            Sphere3.SendMessage("Restart");//それぞれのSphereのRestartってところにシグナルを送る(warpsystem.Restart) 
+           /* for (int S = 0; S < Spheres.Length; S++)
             {   
                 if (Spheres[S] != null) { break; }
-                Spheres[S].SendMessage("Restart");//それぞれのSphereのRestartってところにシグナルを送る(warpsystem.Restart) 
-            }
+                
+            }*/
+
+            AllBreak++;
+            
+            if (wave == 5) { wave = 0;stage++; }
+            wave++;
+            Debug.Log("wave"+wave);
+            Debug.Log("stage" + stage);
+
+            pop = true;
 
             //prefabに直でSendMessageはできなかったのでCloneした後のESphereのcloneにシグナルを送る(warpsystem.ERestart) 
 
             //ESphere.GetComponent<warpsystem>().ERestart();
-            for (int ES = 0; ES < 3; ES++)
+         /*   for (int ES = 0; ES < 3; ES++)
             {
                 if (ESpheres[ES] != null)//オブジェクトが存在している間は実行
                 {
-                    if (ESpheres[ES] == null) { break; }
+                   // if (ESpheres[ES] == null) { break; }
                     ESpheres[ES].GetComponent<warpsystem>().ERestart();
-
+         }
+                else
+                {
+                    break;
                 }
-            }
+            }*/
 
-            AllBreak++;
-            stage++;
-            pop = true;
+
         }
     }
 
-    public void ColorChange()
+    private void BlockCreate()
+    { 
+        BNR = stage / 3;//四捨五入して整数に//もう少し早めに能力付き出してもいいかも　now stage 9^　出てる感じ
+        Debug.Log(stage + "BNR" + BNR);
+        if (BNR < 4) 
+        {  
+            blocknum = Random.Range(1,BNR + 1);
+        } else //BNR >= 4
+        {
+            blocknum = Random.Range(1, BNR);
+            if(BNR > 5) { BNR = 5; }
+        }
+        //produse_t 生成するかしないかに関係
+        produce_t = Random.Range(0, 100);
+        if (produce_t > 5)//5%の確率で生成しない
+        {
+            GameObject kind = Blocks[blocknum];
+            GameObject copied = Object.Instantiate(kind) as GameObject;//いろんなblockをcopiする
+            copied.transform.Translate(wi, hi, ve);
+            copied.name = "block" + num;
+            blockList.Add("block" + num);
+        }
+
+    }
+
+    public void ColorChange()//ボス用
     {
         int X = 0;
         float nX = 0; 
@@ -176,7 +202,7 @@ public class block_clone : MonoBehaviour
                         {
                             num = 0;
                         }
-                        GameObject copied = Object.Instantiate(Eoriginal) as GameObject;//Eoliginalをcopiする
+                        GameObject copied = Object.Instantiate(B0Eoriginal) as GameObject;//Eoliginalをcopiする
                         copied.transform.Translate(Ewi, Ehi, Eve);//copiの出てくる場所を(x=,y=,z=)とする
                         copied.name = "Eblock" + num;
                         blockList.Add ("Eblock" + num);
@@ -192,7 +218,18 @@ public class block_clone : MonoBehaviour
         }
     }
 }
-/*　　ランダムで６が出たとして実際のオブジェクトは１３ってこと？
+/*
+ * stage-wave
+ * 
+ * 1-1  nomal only
+ * 1-2~5  nomal bomb
+ * 2-1~5  nomal bomb freeze
+ * 3-1~5  nomal bomb freeze barrier
+ * 4-1~5  nomal bomb freeze barrier annihilation
+ * 5-1~5  nomal bomb freeze barrier annihilation
+ * 6-1~5  nomal bomb freeze barrier annihilation
+ * 
+ *　　ランダムで６が出たとして実際のオブジェクトは１３ってこと？
  * 
  * 
  * list          index

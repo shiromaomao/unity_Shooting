@@ -24,7 +24,7 @@ public class Partition_Pole : MonoBehaviour
         }
     }
 
-    private IEnumerator PPmove()
+    public IEnumerator PPmove()
     {
 
         for (int i = 0; i < 10; i++)
