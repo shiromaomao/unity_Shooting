@@ -53,7 +53,6 @@ public class warpsystem : MonoBehaviour //warp‚Æsphere‚É‚Â‚¢‚Ä
             if (this.gameObject.tag == "sphere3")
             {
                 Sphere3.transform.position = new Vector3(16.4f, 15, -2.35f);
-                Debug.Log("Sphere3");
                 Debug.Log("sph3" + BallHP);//0@‚Ç‚±‚ÅŒ¸‚Á‚Ä‚éH
                 Sphere3.GetComponent<Rigidbody>().useGravity = true;
 

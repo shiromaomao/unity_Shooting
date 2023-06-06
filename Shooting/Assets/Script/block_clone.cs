@@ -80,8 +80,7 @@ public class block_clone : MonoBehaviour
                         else//1面
                         {
                             num++;
-                            //test 一時的にB1original→B3freeze
-                            GameObject copied = Object.Instantiate(B3freeze) as GameObject;//oliginalをcopiする
+                            GameObject copied = Object.Instantiate(B1original) as GameObject;//oliginalをcopiする
                             copied.transform.Translate(wi, hi, ve);//copiの出てくる場所を(x=-25,y=30,z=-6~7)とする
                             copied.name = "block" + num;
                             blockList.Add("block" + num);
@@ -123,24 +122,6 @@ public class block_clone : MonoBehaviour
             Debug.Log("stage" + stage);
 
             pop = true;
-
-            //prefabに直でSendMessageはできなかったのでCloneした後のESphereのcloneにシグナルを送る(warpsystem.ERestart) 
-
-            //ESphere.GetComponent<warpsystem>().ERestart();
-         /*   for (int ES = 0; ES < 3; ES++)
-            {
-                if (ESpheres[ES] != null)//オブジェクトが存在している間は実行
-                {
-                   // if (ESpheres[ES] == null) { break; }
-                    ESpheres[ES].GetComponent<warpsystem>().ERestart();
-         }
-                else
-                {
-                    break;
-                }
-            }*/
-
-
         }
     }
 
@@ -158,7 +139,7 @@ public class block_clone : MonoBehaviour
         }
         //produse_t 生成するかしないかに関係
         produce_t = Random.Range(0, 100);
-        if (produce_t > 5)//5%の確率で生成しない
+        if (produce_t > 3)//3%の確率で生成しない
         {
             GameObject kind = Blocks[blocknum];
             GameObject copied = Object.Instantiate(kind) as GameObject;//いろんなblockをcopiする
@@ -166,6 +147,7 @@ public class block_clone : MonoBehaviour
             copied.name = "block" + num;
             blockList.Add("block" + num);
         }
+        else { Debug.Log("not product"); }
 
     }
 

@@ -28,12 +28,12 @@ public class PlayManual : MonoBehaviour
     void Start()// \n (バックスラッシュ＋ｎで改行)PCによってはバックスラッシュがお金のマークになる
     {
         MC = 0;
-        manual_list.Add("水色の板reflectorは\nWASDで上下移動ができるよ");//0
-        manual_list.Add("reflectorは左右の矢印キー\nで向きを変えれるよ\nRキーで中央に戻るよ");//1
-        manual_list.Add("Cキー長押しで弾を装填\nもう一度Cキーを押すと発射！");//2
-        manual_list.Add("スペースキーで視点を\n切り替えることができるよ");//3
-        manual_list.Add("mキーでチュートリアル\nに戻ってこれるよ！");//4
-        manual_list.Add("PUSH　P　PLAY\n　PUSH　B　BACK\n　(PUSH　N　NEXT)");//5//PLAYはできてる
+        manual_list.Add("reflector(skyblue boad)can move \n Up-Down and left-Right by WASDkey");//0
+        manual_list.Add("reflector can be changed \n direction by ⇔key \n Back to center by Rkey");//1
+        manual_list.Add("To launch ball \n Press and hold Ckey, \n Wait for a while  then press again");//2
+        manual_list.Add("You can change direction of camera \n two pattern");//3
+        manual_list.Add("You can come back tutorial by Mkey");//4
+        manual_list.Add("PUSH P to PLAY \n　PUSH B to BACK \n　(PUSH N to go NEXT)");//5//PLAYはできてる
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class PlayManual : MonoBehaviour
         }
         //MC == 2
         MC2 = LPsensor.MC2pass;
-        if (MC2 && !MC2judge)//LPsensorで判別する
+        if (MC2 && !MC2judge)//LPsensorで判別する//要確認&デバッグ
         {
             MC = 3;
             MC2 = false;
